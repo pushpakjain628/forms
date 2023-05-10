@@ -1,0 +1,32 @@
+<div class="card">
+    <nav class="navbar navbar-dark text-center">
+        <div class="mb-3">
+            <label>
+                <h1> Select Form</h1>
+            </label>
+            <select class="form-select" [formControl]="formSelectControl">
+                <option selected></option>
+                <option *ngFor="let option of options" [value]="option.key">{{option?.label}}</option>
+
+            </select>
+        </div>
+
+    </nav>
+</div>
+
+
+<div class="card" *ngIf="isObjectEmpty(formData)">
+    <nav class="navbar navbar-dark bg-primary text-center">
+        <!-- Navbar content -->
+        <h5 class="text-white ">
+            <h1>{{formData?.title}}</h1>
+        </h5>
+    </nav>
+    <div class="card-body">
+
+        <p class="card-text">
+            <app-json-form [jsonFormData]="formData" (formSubmit)="onFormSubmit($event)"></app-json-form>
+        </p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>

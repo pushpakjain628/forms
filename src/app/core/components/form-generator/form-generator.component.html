@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div *ngFor="let field of formStructure">
+      <label [attr.for]="field.name">{{ field.label }}</label>
+      <input [attr.type]="field.type" [attr.id]="field.name" [formControlName]="field.name" [attr.placeholder]="field.placeholder">
+    </div>
+    <button type="Submit" class="btn btn-primary">Submit</button>
+  
+  </form>
+  
