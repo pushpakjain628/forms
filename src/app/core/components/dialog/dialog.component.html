@@ -1,0 +1,9 @@
+<div class="card  mb-3" style="max-width: 18rem;">
+    <div [ngClass]="{'text-center text-white  card-header bg-success': data.class == 1,'text-center text-white  card-header bg-danger': data.class == 0}"
+        class=" ">
+        {{data.title}}</div>
+    <div class="card-body">
+        <h5 class="card-title text-black">Error Occured While trying to hit the api</h5>
+        <p class="card-text">{{ data.message }}</p>
+    </div>
+</div>

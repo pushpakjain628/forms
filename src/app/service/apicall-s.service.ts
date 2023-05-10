@@ -15,4 +15,8 @@ export class APICallSService {
   getFormJson(key: any) {
     return this.http.get(environment.getFormData + key);
   }
+
+  postAPI(endPoint: any, data: any) {
+    return this.http.post(endPoint, data);
+  }
 }

@@ -1,6 +1,7 @@
 {
   "formkey": "testingform",
   "title": "Testing Form",
+  "endpoint": "/save-data",
   "controls": [
     {
       "name": "firstName",
@@ -10,37 +11,6 @@
       "validators": {
         "required": true,
         "minLength": 10
-      }
-    },
-    {
-      "name": "lastName",
-      "label": "Last name:",
-      "value": "",
-      "type": "text",
-      "validators": {}
-    },
-    {
-      "name": "select",
-      "label": "Select:",
-      "value": "",
-      "options": ["uat1", "uat2"],
-      "type": "select",
-      "validators": {}
-    },
-    {
-      "name": "date",
-      "label": "date:",
-      "value": "",
-      "type": "date",
-      "validators": {}
-    },
-    {
-      "name": "Password",
-      "label": "Password:",
-      "value": "",
-      "type": "password",
-      "validators": {
-        "required": true
       }
     }
   ]

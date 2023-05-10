@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { APICallSService } from 'src/app/service/apicall-s.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent, DialogData } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-show-dynamic-forms',
@@ -22,7 +23,7 @@ export class ShowDynamicFormsComponent implements OnInit {
     }
     return Object.keys(obj).length > 0;
   }
-  constructor(private service: APICallSService) {
+  constructor(private service: APICallSService, public dialog: MatDialog) {
     this.formSelectControl.valueChanges.subscribe((value) => {
       this.getFormJson(value);
     });
@@ -45,6 +46,36 @@ export class ShowDynamicFormsComponent implements OnInit {
   }
 
   onFormSubmit(formData: any) {
+    let endPoint = this.formData['endpoint'];
+    this.service.postAPI(endPoint, formData).subscribe(
+      (res: any) => {
+        this.openDialog(this.formData.title, res['msg'], 1);
+      },
+      (error: any) => {
+        this.openDialog(this.formData.title, error['msg'], 0);
+      }
+    );
+
     console.log(formData); // handle emitted form values
+  }
+
+  openDialog(title: any, message: any, option: any): void {
+    const dialogRef = this.dialog.open<DialogComponent, DialogData>(
+      DialogComponent,
+      {
+        width: '250px',
+        data: {
+          title,
+          message,
+          class: option,
+        },
+      }
+    );
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        // User confirmed the action
+      }
+    });
   }
 }

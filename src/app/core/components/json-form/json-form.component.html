@@ -45,7 +45,8 @@
         </div>
         <div class="mb-3" *ngIf="control.type === 'date'">
             <label for="dateInput" class="form-label">Date:</label>
-            <input type="date" class="form-control" id="dateInput">
+            <input type="date" [formControlName]="control.name" [value]="control.value" class="form-control"
+                id="dateInput">
         </div>
     </div>
 

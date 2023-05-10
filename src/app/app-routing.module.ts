@@ -5,6 +5,11 @@ import { JsonFormComponent } from './core/components/json-form/json-form.compone
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'select-forms',
+    pathMatch: 'full',
+  },
+  {
     path: 'select-forms',
     component: ShowDynamicFormsComponent,
   },
